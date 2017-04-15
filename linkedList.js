@@ -10,10 +10,12 @@ function Node (value, next){
 
 function LinkedList(){
   this.head = null;
+  this.length = 0;
 }
 
 LinkedList.prototype.push = function(value){
   this.head = new Node(value, this.head);
+  this.length ++;
 };
 
 // LinkedList.prototype.display = function(){
@@ -48,9 +50,18 @@ LinkedList.prototype.display = function(){
   while (p){
     listThing += `[${p.value}] -> `;
     p = p.next;
-
+  console.log('this is the length of display fx' + this.length);
   }
   return listThing;
 };
 
 list.display();
+
+LinkedList.prototype.pop = function(){
+  if(this.head !== null){
+    var temp = this.head;
+    this.head = this.head.next;
+    this.length--;
+    return temp;
+  }
+}
