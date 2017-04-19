@@ -45,11 +45,11 @@ console.log(list.head);
 // };
 
 LinkedList.prototype.display = function(){
-  var p = this.head;
+  var temp = this.head;
   var listThing = '';
-  while (p){
-    listThing += `[${p.value}] -> `;
-    p = p.next;
+  while (temp){
+    listThing += `[${temp.value}] -> `;
+    temp = temp.next;
   console.log('this is the length of display fx' + this.length);
   }
   return listThing;
@@ -59,9 +59,46 @@ list.display();
 
 LinkedList.prototype.pop = function(){
   if(this.head !== null){
-    var temp = this.head;
+    let temp = this.head;
     this.head = this.head.next;
     this.length--;
     return temp;
   }
 }
+
+LinkedList.prototype.search = function(input){
+    let temp = this.head;
+
+    while(temp.value !== input){
+      temp = temp.next;
+
+      if(temp === null) {
+        return "not found";
+      }
+    }
+    return temp;
+}
+
+LinkedList.prototype.cyclical = function(){
+  let temp = this.head;
+  let array = [];
+  while(temp.next){
+    console.log('looping!');
+    if(array.includes(temp)){
+      return `Cyclical node is ${temp}`;
+    }
+    array.push(temp);
+    temp = temp.next;
+  }
+  return null;
+}
+
+
+
+// LinkedList.prototype.getItem = function(index){
+  //given index of notde, return the value of the node
+// }
+//
+// LinkedList.prototype.remove = function (){
+//   //remove any linked list []
+// }
