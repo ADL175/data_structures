@@ -50,7 +50,6 @@ LinkedList.prototype.display = function(){
   while (temp){
     listThing += `[${temp.value}] -> `;
     temp = temp.next;
-  console.log('this is the length of display fx' + this.length);
   }
   return listThing;
 };
@@ -92,8 +91,69 @@ LinkedList.prototype.cyclical = function(){
   }
   return null;
 }
+// ********************************
+
+var listA = new LinkedList();
+var listB = new LinkedList();
 
 
+listA.push(4);
+listA.push(5);
+listA.push(6);
+
+listB.push(1);
+listB.push(2);
+listB.push(3);
+
+
+function listToNum(input){
+  var listNew = input;
+  let temp = listNew.head;
+  let array = [];
+  while(temp){
+    array.push(temp.value);
+    temp = temp.next;
+  }
+  return parseInt(array.reverse().join(''));
+}
+
+function sum(a,b){
+  let aNew = listToNum(a);
+  let bNew = listToNum(b);
+  let sum = aNew + bNew;
+  return sum;
+}
+
+function sumLinkFunction(input){
+  var listC = new LinkedList();
+  let array = input;
+  console.log(array);
+  // array.push(input);
+  var digits = (""+array).split("");
+    console.log(digits);
+  for (let i = 0; i < digits.length; i++){
+    listC.push(digits[i]);
+  }
+
+  return listC;
+}
+
+// ********************************
+
+
+
+console.log(listA.display());
+console.log(listB.display());
+let aVar = listToNum(listA);
+let bVar = listToNum(listB);
+
+console.log(aVar);
+console.log(bVar);
+console.log(sum(listA,listB));
+console.log(sumLinkFunction(579));
+let newList = sumLinkFunction(23452345);
+console.log(newList);
+newList.display();
 
 // LinkedList.prototype.getItem = function(index){
   //given index of notde, return the value of the node
